@@ -12,6 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-color: #fdf0e8; /* Light orange background */
         }
 
         .container {
@@ -23,8 +24,8 @@
             max-width: 200px; /* Maximum width */
             height: 50vw; /* Adjust size relative to viewport width */
             max-height: 200px; /* Maximum height */
-            background-color: #f8e499;
-            border: 5px solid #e1b61a;
+            background-color: #f8e499; /* Light yellow cake */
+            border: 5px solid #e1b61a; /* Dark yellow border */
             border-radius: 50%;
             position: relative;
         }
@@ -32,27 +33,27 @@
         .candle {
             width: 5vw; /* Adjust size relative to viewport width */
             height: 25vw; /* Adjust size relative to viewport width */
-            background-color: #ffec80;
+            background-color: #ffec80; /* Candle color */
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+            border-radius: 10px; /* Rounded candle edges */
+            box-shadow: 0px 0px 10px rgba(255, 235, 128, 0.8); /* Candle glow */
         }
 
         .flame {
-            width: 10vw; /* Adjust size relative to viewport width */
-            height: 10vw; /* Adjust size relative to viewport width */
-            max-width: 20px; /* Maximum width */
-            max-height: 20px; /* Maximum height */
-            background: radial-gradient(circle, #ff5a5a, #ff0000);
+            width: 20px; /* Fixed size for flame */
+            height: 40px; /* Fixed size for flame */
+            background: radial-gradient(circle, #ff5a5a, transparent); /* Flame gradient */
             position: absolute;
-            top: -10vw; /* Adjust position relative to viewport width */
+            top: -30px; /* Adjust position */
             left: 50%;
             transform: translateX(-50%);
             border-radius: 50%;
-            animation: flicker 0.5s infinite alternate;
+            animation: flicker 0.5s infinite alternate; /* Flickering animation */
+            filter: brightness(150%); /* Brighten flame */
+            mix-blend-mode: overlay; /* Blend mode to enhance appearance */
         }
 
         @keyframes flicker {
@@ -60,7 +61,7 @@
                 opacity: 1;
             }
             to {
-                opacity: 0.5;
+                opacity: 0.8;
             }
         }
 
@@ -82,8 +83,8 @@
 
             .flame {
                 width: 16px; /* Fixed size for smaller screens */
-                height: 16px; /* Fixed size for smaller screens */
-                top: -8vw; /* Adjust position relative to viewport width */
+                height: 32px; /* Fixed size for smaller screens */
+                top: -20px; /* Adjust position relative to viewport width */
             }
 
             p {
