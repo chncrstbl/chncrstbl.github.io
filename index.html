@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+    <title>Invitation💝</title>
+    <style>
+        * {
+            /* border: 1px solid black; */
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #0969b8;
+        }
+        .ask {
+            margin-top: 20%;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .animated-gif {
+            width: 300px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 1px 1px 25px black;
+        }
+        .ask h1,h4 {
+            color: whitesmoke;
+        }
+        button {
+            position: absolute;
+            cursor: pointer;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            height: inherit;
+            width: 150px;
+        }
+        button:nth-child(1){
+            margin-left: -200px;
+        }
+        button:nth-child(2){
+            margin-right: -200px;
+        }
+        .btn-grp{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ask">
+        <h1 class="question">Will you be my partner?</h1>
+        <h4 class="smolquestion"></h4>
+        <div>
+            <img class="animated-gif" src="https://i.pinimg.com/564x/7f/92/31/7f923159935209f568b290c535ff5c80.jpg">
+        </div>
+        <div class="btn-grp">
+            <button id="yesB">Yes</button>
+            <button id="noB">No</button>
+        </div>
+    </div>
+</body>
+<script>
+    const question = document.querySelector(".question");
+    const smolquestion = document.querySelector(".smolquestion");
+    const gif = document.querySelector(".animated-gif");
+    const yesButton = document.getElementById("yesB");
+    const noButton = document.getElementById("noB");
+    
+    document.getElementById("yesB").addEventListener("click", () => {
+        question.innerHTML ="Looking forward for a memorable night with you!~~";
+        smolquestion.innerHTML = "and thank you for your cooperation hehez.";
+        gif.src = "https://i.pinimg.com/564x/09/d3/29/09d329efa67500d35a1e117cbf647e54.jpg"
+        yesButton.style.display = "none"; // Hide the Yes button
+        noButton.style.display = "none"; // Hide the No button
+    });
+
+    var b = document.getElementById("noB");
+    b.addEventListener("click", function change(){
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+
+        var i = Math.random() * (screenWidth - 50) + 1;
+        var j = Math.random() * (screenHeight - 50) + 1;
+        b.style.left = i + "px";
+        b.style.top = j + "px";
+    });
+</script>
+</html>
