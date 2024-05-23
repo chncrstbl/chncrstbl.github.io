@@ -3,174 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Greeting</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico?">
+    <title>Invitation💝</title>
     <style>
+        * {
+            /* border: 1px solid black; */
+            box-sizing: border-box;
+        }
         body {
-            font-family: Arial, sans-serif;
+            background-color: #0969b8;
+        }
+        .ask {
+            margin-top: 20%;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .animated-gif {
+            width: 300px;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 1px 1px 25px black;
+        }
+        .ask h1,h4 {
+            color: whitesmoke;
+        }
+        button {
+            position: absolute;
+            cursor: pointer;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            height: inherit;
+            width: 150px;
+        }
+        button:nth-child(1){
+            margin-left: -200px;
+        }
+        button:nth-child(2){
+            margin-right: -200px;
+        }
+        .btn-grp{
+            width: 100%;
+            height: 40px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #fdf0e8; /* Light orange background */
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        .cake {
-            width: 50vw; /* Adjust size relative to viewport width */
-            max-width: 200px; /* Maximum width */
-            height: 50vw; /* Adjust size relative to viewport width */
-            max-height: 200px; /* Maximum height */
-            background-color: #f8e499; /* Light yellow cake */
-            border: 5px solid #e1b61a; /* Dark yellow border */
-            border-radius: 50%;
-            position: relative;
-        }
-
-        .candle {
-            width: 5vw; /* Adjust size relative to viewport width */
-            height: 25vw; /* Adjust size relative to viewport width */
-            background-color: #ffec80; /* Candle color */
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 10px; /* Rounded candle edges */
-            box-shadow: 0px 0px 10px rgba(255, 235, 128, 0.8); /* Candle glow */
-        }
-
-        .flame {
-            width: 40px; /* Fixed width for flame */
-            height: 80px; /* Fixed height for flame */
-            position: absolute;
-            top: -65px; /* Adjust position */
-            left: 50%;
-            transform: translateX(-50%);
-            animation: flameAnimation 1s ease-in-out infinite alternate; /* Flame animation */
-            opacity: 0; /* Initially hidden */
-            z-index: 1; /* Ensure flame is above candle */
-        }
-
-        @keyframes flameAnimation {
-            0% {
-                opacity: 1;
-                transform: translateX(-50%) scale(1) rotate(0deg);
-                box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.8); /* Flame glow */
-            }
-            25% {
-                transform: translateX(-50%) scale(1.1) rotate(-5deg);
-                box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.6); /* Flame glow */
-            }
-            50% {
-                transform: translateX(-50%) scale(1.2) rotate(5deg);
-                box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.4); /* Flame glow */
-            }
-            75% {
-                transform: translateX(-50%) scale(1.1) rotate(-5deg);
-                box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.6); /* Flame glow */
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(-50%) scale(1) rotate(0deg);
-                box-shadow: 0 0 20px 10px rgba(255, 165, 0, 0.8); /* Flame glow */
-            }
-        }
-
-        p {
-            font-size: 16px; /* Adjust font size for smaller screens */
-        }
-
-        @media only screen and (max-width: 600px) {
-            /* Adjustments for smaller screens */
-            .cake {
-                width: 80vw; /* Adjust size relative to viewport width */
-                height: 80vw; /* Adjust size relative to viewport width */
-            }
-
-            .candle {
-                width: 8vw; /* Adjust size relative to viewport width */
-                height: 40vw; /* Adjust size relative to viewport width */
-            }
-
-            .flame {
-                width: 20px; /* Fixed width for smaller screens */
-                height: 40px; /* Fixed height for smaller screens */
-                top: -45px; /* Adjust position relative to viewport width */
-            }
-
-            p {
-                font-size: 14px; /* Adjust font size for smaller screens */
-            }
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Happy Birthday!</h1>
-        <div class="cake">
-            <div class="candle" id="candle"></div>
-            <div class="flame"></div>
+    <div class="ask">
+        <h1 class="question">Will you be my partner?</h1>
+        <h4 class="smolquestion"></h4>
+        <div>
+            <img class="animated-gif" src="https://i.pinimg.com/564x/7f/92/31/7f923159935209f568b290c535ff5c80.jpg">
         </div>
-        <p>Blow the candle!</p>
+        <div class="btn-grp">
+            <button id="yesB">Yes</button>
+            <button id="noB">No</button>
+        </div>
     </div>
-
-    <script>
-        const candle = document.getElementById('candle');
-        const flame = document.querySelector('.flame');
-
-        // Function to blow the candle
-        function blowCandle() {
-            flame.style.display = 'block'; // Show flame
-
-            // Check if the browser supports Web Audio API
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                // Request access to the microphone
-                navigator.mediaDevices.getUserMedia({ audio: true })
-                    .then(function(stream) {
-                        const audioContext = new AudioContext();
-                        const analyser = audioContext.createAnalyser();
-                        const microphone = audioContext.createMediaStreamSource(stream);
-
-                        // Set up analyser
-                        analyser.smoothingTimeConstant = 0.8;
-                        analyser.fftSize = 1024;
-
-                        // Connect microphone to analyser
-                        microphone.connect(analyser);
-
-                        // Analyse audio data
-                        const dataArray = new Uint8Array(analyser.frequencyBinCount);
-                        analyser.getByteTimeDomainData(dataArray);
-
-                        // Check for loud sound to blow out candle
-                        function checkBlow() {
-                            analyser.getByteTimeDomainData(dataArray);
-                            const average = Array.from(dataArray).reduce((acc, val) => acc + val, 0) / dataArray.length;
-                            if (average > 128) { // Adjust this threshold as needed
-                                flame.style.display = 'none'; // Hide flame
-                                stream.getTracks().forEach(track => track.stop()); // Stop microphone stream
-                                return;
-                            }
-                            requestAnimationFrame(checkBlow); // Check continuously
-                        }
-
-                        checkBlow(); // Start checking for blow
-                    })
-                    .catch(function(err) {
-                        console.error('Error accessing microphone:', err);
-                    });
-            } else {
-                console.error('Web Audio API not supported.');
-            }
-        }
-
-        // Listen for a click on the candle
-        candle.addEventListener('click', () => {
-            blowCandle();
-        });
-    </script>
 </body>
+<script>
+    const question = document.querySelector(".question");
+    const smolquestion = document.querySelector(".smolquestion");
+    const gif = document.querySelector(".animated-gif");
+    const yesButton = document.getElementById("yesB");
+    const noButton = document.getElementById("noB");
+    
+    document.getElementById("yesB").addEventListener("click", () => {
+        question.innerHTML ="Looking forward for a memorable night with you!~~";
+        smolquestion.innerHTML = "and thank you for your cooperation hehez.";
+        gif.src = "https://i.pinimg.com/564x/09/d3/29/09d329efa67500d35a1e117cbf647e54.jpg"
+        yesButton.style.display = "none"; // Hide the Yes button
+        noButton.style.display = "none"; // Hide the No button
+    });
+
+    var b = document.getElementById("noB");
+    b.addEventListener("click", function change(){
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+
+        var i = Math.random() * (screenWidth - 50) + 1;
+        var j = Math.random() * (screenHeight - 50) + 1;
+        b.style.left = i + "px";
+        b.style.top = j + "px";
+    });
+</script>
 </html>
